@@ -1,5 +1,6 @@
 name: Test
 on:
+  push:
   workflow_dispatch:
 jobs:
   build:
@@ -20,3 +21,5 @@ jobs:
         tag_name: nightly
         files: nodejs-sea-creator/sea-test*
         make_latest: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+
