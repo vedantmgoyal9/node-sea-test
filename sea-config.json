@@ -1,4 +1,4 @@
 {
   "main": "index.js",
-  "output": "nodejs-sea-creator/sea-prep.blob"
+  "output": "nodejs-sea-creator\sea-prep.blob"
 }
