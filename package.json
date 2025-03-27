@@ -1,0 +1,22 @@
+{
+  "name": "sea-test",
+  "version": "1.0.0",
+  "description": "Test repo for nodejs-sea-creator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vedantmgoyal9/node-sea-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vedantmgoyal9/node-sea-test/issues"
+  },
+  "homepage": "https://github.com/vedantmgoyal9/node-sea-test#readme",
+  "dependencies": {
+    "commander": "^13.1.0"
+  }
+}
