@@ -1,0 +1,24 @@
+name: Test
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, macos-15, ubuntu-24.04-arm, ubuntu-22.04-arm, windows-2022, windows-2025, ubuntu-24.04, ubuntu-22.04]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - run: rustup default stable
+    - run: cargo install --git https://github.com/vedantmgoyal9/nodejs-sea-creator.git
+    - run: nodejs-sea-creator
+    - uses: softprops/action-gh-release@v2.2.1
+      with:
+        tag_name: nightly
+        files: nodejs-sea-creator/sea-test*
+        make_latest: true
