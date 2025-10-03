@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: 24f2000934@ds.study.iitm.ac.in
         uses: actions/checkout@v4
       - run: npm i
       # Cache dependencies (example: Node.js/npm)
