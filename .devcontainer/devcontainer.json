@@ -3,7 +3,6 @@
   "name": "ga2-aa28c9",
 
   // Use a base image. The Universal Image is a good default.
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
 
   "features": {
     // Install Python using the devcontainer feature.
