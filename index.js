@@ -1,23 +1,35 @@
-// This is used as an example in the README for:
-//    Common option types, boolean and value
-
-const commander = require('commander');
-const program = new commander.Command();
+const { program } = require('commander');
+const os = require('os');
 
 program
-  .option('-d, --debug', 'output extra debugging')
-  .option('-s, --small', 'small pizza size')
-  .option('-p, --pizza-type <type>', 'flavour of pizza');
+  .version('1.0.0')
+  .description('A simple CLI to display system information');
+
+program
+  .command('cpu')
+  .description('Display CPU information')
+  .action(() => {
+    console.log('CPU Information:');
+    console.table(os.cpus());
+  });
+
+program
+  .command('memory')
+  .description('Display memory information')
+  .action(() => {
+    console.log('Memory Information:');
+    console.log(`Total Memory: ${(os.totalmem() / 1024 / 1024 / 1024).toFixed(2)} GB`);
+    console.log(`Free Memory: ${(os.freemem() / 1024 / 1024 / 1024).toFixed(2)} GB`);
+  });
+
+program
+  .command('os')
+  .description('Display OS information')
+  .action(() => {
+    console.log('OS Information:');
+    console.log(`OS Type: ${os.type()}`);
+    console.log(`Platform: ${os.platform()}`);
+    console.log(`Release: ${os.release()}`);
+  });
 
 program.parse(process.argv);
-
-const options = program.opts();
-if (options.debug) console.log(options);
-console.log('pizza details:');
-if (options.small) console.log('- small pizza size');
-if (options.pizzaType) console.log(`- ${options.pizzaType}`);
-
-// Try the following:
-//    node options-common.js -p
-//    node options-common.js -d -s -p vegetarian
-//    node options-common.js --pizza-type=cheese
