@@ -1,0 +1,30 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '15 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ allows push access
+
+      - name: Commit step - 24f2000934@ds.study.iitm.ac.in
+        run: |
+          echo "TDSFU Daily run: $(date -u) TDSFU" >> daily-log.txt
+
+      - name: Git Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily-log.txt
+          git commit -m "Auto commit at $(date -u)" || echo "No changes to commit"
+          git push
